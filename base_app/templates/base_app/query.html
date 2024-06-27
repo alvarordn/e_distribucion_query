@@ -1,0 +1,76 @@
+{% extends 'base_template.html' %}
+
+{% block content %}
+
+<div class="main_container">
+    <div class='card' >
+        <div class="card__body">
+            <h4> Acceso a los datos de Endesa Distribución </h4>
+        </div>    
+    </div>
+    <div class='card card--dark' >
+        <div class="card__body">
+            <p>
+              Por favor, introduzca sus credenciales de Endesa distribución para acceder a los datos así como el día ocncreto que se desea consultar
+            </p>
+        </div>
+    </div>
+
+    <form method='POST' action=""  class="form">
+        {% csrf_token %}
+        <!-- Input:Text -->
+        <div class="form__field">
+          <label for="formInput#text">Usuario: </label>
+          <input
+            class="input input--text"
+            id="formInput#text"
+            type="text"
+            name="username"
+            placeholder="DNI del titular del suministro en e-distribución"
+          />
+        </div>
+
+        <!-- Input:Text -->
+        <div class="form__field">
+          <label for="formInput#text">Password: </label>
+          <input
+            class="input input--text"
+            id="formInput#text"
+            type="password"
+            name="password"
+            placeholder="Password de e-distribución"
+          />
+        </div>
+
+        <div class="form__field">
+          <label for="formInput#date">Fecha: </label>
+          <input
+            class="input input--text"
+            id="formInput#date"
+            type="date"
+            name="date"
+            placeholder="Seleccione una fecha"
+          />
+        </div>
+
+        <!-- Input:Submit / Input:Reset  -->
+        <div class="form__field form__field--action">
+          <input class="btn" type="reset" value="Reset" />
+          <input class="btn btn--main" type="submit" value="Submit" />
+        </div>
+      </form>
+
+      {% if resultado %}
+    <div class='card card--result'>
+        <div class="card__body">
+            <h4>Resultado:</h4>
+            <p>{{ resultado }}</p>
+        </div>
+    </div>
+    {% endif %}
+
+</div>  
+
+
+
+{% endblock content %}
