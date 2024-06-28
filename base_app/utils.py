@@ -1,5 +1,6 @@
 def procesar_credenciales(username, password, date):
-    date_str = date.strftime('%Y-%m-%d')
+    date_str = date
+    # date_str = date.strftime('%Y-%m-%d')
     edis = Edistribucion(username, password)
     cups = edis.get_list_cups()[-1]
     meas = edis.get_meas_interval(cups['Id'], date_str, date_str)
